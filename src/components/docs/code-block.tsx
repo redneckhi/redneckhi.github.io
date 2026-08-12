@@ -65,7 +65,7 @@ export function CodeBlock({
       <pre
         ref={preRef}
         className={cn(
-          "m-0 overflow-x-auto bg-transparent p-0 font-mono text-sm leading-relaxed",
+          "m-0 overflow-x-hidden whitespace-pre-wrap break-words bg-transparent p-0 font-mono text-sm leading-relaxed",
           className,
         )}
         data-language={dataLanguage}
