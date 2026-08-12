@@ -1,0 +1,16 @@
+{
+  "slug": "field-softshell",
+  "name": "Field Softshell Mk.I",
+  "tagline": "Weather shell. Good enough for the ridge.",
+  "tags": ["Clothing"],
+  "status": "Field testing",
+  "sku": "RHI-SOFTSHELL-C101",
+  "coverAccent": "orange",
+  "summary": "Three-layer softshell with high-vis tape panels and radio-cable routing. Built for wet weather and long days on the wire.",
+  "buyUrl": "https://example.com/buy/field-softshell",
+  "images": [
+    "/products/field-softshell/01.svg",
+    "/products/field-softshell/02.svg",
+    "/products/field-softshell/03.svg"
+  ]
+}

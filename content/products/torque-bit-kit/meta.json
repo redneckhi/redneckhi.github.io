@@ -1,0 +1,11 @@
+{
+  "slug": "torque-bit-kit",
+  "name": "Torque Bit Field Kit",
+  "tagline": "The bits you actually need, in a tin that closes.",
+  "tags": ["Tools"],
+  "status": "Beta",
+  "sku": "RHI-TORQUEKIT-T101",
+  "coverAccent": "orange",
+  "summary": "A curated driver-bit and fastener kit for radios, racks, and soft goods hardware. No novelty multitools.",
+  "images": ["/products/torque-bit-kit/01.svg"]
+}

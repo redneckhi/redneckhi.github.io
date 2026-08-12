@@ -1,0 +1,69 @@
+## Overview
+
+Trailbrain Scout is a reference pipeline for on-device visual triage. Capture → detect → classify → decide → notify. The cloud is optional storage, not a dependency.
+
+## System diagram
+
+1. Camera ingest (RTSP / USB / CSI)
+2. Motion gate (cheap CPU filter)
+3. Detector (person / vehicle / animal)
+4. Classifier head (optional fine labels)
+5. Rule engine → local alert / mesh message / clip archive
+
+## Hardware targets
+
+### Recommended
+
+- Board with NPU or strong CPU (Coral-class, RK3588, Apple Silicon for lab)
+- 8 GB RAM preferred for multi-stream
+- Weather enclosure with silica and cable glands
+
+### Minimum
+
+- Single 1080p stream on a mid-range SBC
+- Quantized model under 20 MB
+
+## Model loading
+
+Place ONNX / TFLite models in `/opt/trailbrain/models`. Config points at filenames only — never bake absolute lab paths into field images.
+
+```yaml
+models:
+  detector: yolov8n-person-vehicle.tflite
+  classifier: trail-triage-v2.onnx
+thresholds:
+  person: 0.45
+  vehicle: 0.40
+  animal: 0.35
+```
+
+## Rules
+
+Rules are JSON. Keep them boring.
+
+```json
+{
+  "name": "night-person",
+  "when": { "label": "person", "after": "20:00", "before": "06:00" },
+  "then": ["save_clip", "mesh_alert"]
+}
+```
+
+## Privacy
+
+Default: store clips locally encrypted-at-rest if the board supports it. Do not auto-upload. Delete policies should be explicit, not vibes.
+
+## Field install
+
+1. Flash the Scout image
+2. Join the management Wi-Fi AP once, set credentials, disable AP
+3. Aim camera; run calibration for motion noise (leaves, rain)
+4. Confirm alerts on a known walk-through
+
+## Tuning
+
+False positives from foliage: raise motion gate, lower night sensitivity. Missed vehicles: check IR illumination and detector threshold before blaming the model.
+
+## Ethics note
+
+This kit is for property awareness and wildlife surveys you are authorized to run. Do not point it at spaces where people have a reasonable expectation of privacy.

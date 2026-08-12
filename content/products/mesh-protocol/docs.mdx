@@ -1,0 +1,82 @@
+## Overview
+
+RHI Mesh Protocol (RMP) is a store-and-forward messaging protocol designed for intermittent links. Nodes relay when they can, drop duplicates when they must, and never pretend the network is reliable.
+
+## Design principles
+
+- Prefer delivery over ordering
+- Prefer inspectable packets over clever compression
+- Prefer offline-first UX over cloud sync theater
+- Prefer good enough crypto defaults over DIY crypto
+
+## Packet format
+
+### Header
+
+| Field | Size | Notes |
+|-------|------|-------|
+| magic | 2 B | `0x52 0x48` (`RH`) |
+| version | 1 B | currently `0x01` |
+| type | 1 B | message / beacon / ack |
+| ttl | 1 B | hop budget |
+| flags | 1 B | priority, encrypted |
+| length | 2 B | payload length |
+| msg_id | 8 B | random id for dedupe |
+
+### Payload
+
+UTF-8 text or CBOR for structured beacons. Keep payloads small; the field does not owe you media galleries.
+
+## Reference node
+
+### Hardware
+
+- Raspberry Pi–class SBC or ESP32 gateway for radio bridge
+- LoRa radio module (region-legal frequency only)
+- Optional USB GPS for beacon position
+
+### Software stack
+
+1. Install Linux and enable UART / SPI for the radio
+2. Clone the reference daemon
+3. Set `node_id`, `channel`, and `key_material` in config
+4. Bring up `rmpd` as a systemd service
+
+## Configuration
+
+```ini
+[node]
+id = rhi-field-03
+channel = 7
+ttl_default = 8
+
+[radio]
+driver = lora
+region = EU868
+tx_power = 14
+
+[security]
+psk = REPLACE_ME
+```
+
+Rotate keys when people leave the team. Treat the PSK like a shared gate code, not a vault.
+
+## Operations
+
+### Beacons
+
+Enable position beacons only when the mission needs them. Beacons burn airtime and leave a trail.
+
+### Deduplication
+
+Nodes keep a ring buffer of recent `msg_id` values. Increase buffer size on busy nets; decrease on memory-starved MCUs.
+
+## Troubleshooting
+
+- No TX: check region, antenna, and duty-cycle limits
+- Dup storms: TTL too high or missing dedupe store
+- Partial messages: MTU mismatch between bridges
+
+## Roadmap
+
+Alpha focuses on text + beacons. Voice is explicitly out of scope until the mesh stops dropping coordinates.

@@ -1,0 +1,11 @@
+{
+  "slug": "signal-flare-stub",
+  "name": "Signal Flare Stub",
+  "tagline": "Placeholder unit — docs deferred to later season.",
+  "tags": ["Tools"],
+  "status": "Unavailable",
+  "sku": "RHI-FLARESTUB-T100",
+  "coverAccent": "yellow",
+  "summary": "Scaffold SKU for a chemical signal flare pattern. Documentation and purchase link intentionally unset until the field brief is locked.",
+  "docsAvailable": false
+}

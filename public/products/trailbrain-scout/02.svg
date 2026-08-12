@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#0f1210"/>
+  <path d="M80 480 L220 200 L360 360 L520 120 L720 480" stroke="#84CC16" stroke-width="3" fill="none"/>
+  <circle cx="220" cy="200" r="8" fill="#F97316"/>
+  <circle cx="520" cy="120" r="8" fill="#FACC15"/>
+  <text x="60" y="70" fill="#84CC16" font-family="monospace" font-size="14">INFER · CONFIDENCE TRACE</text>
+  <text x="240" y="190" fill="#F8FAFC" font-family="monospace" font-size="12">person 0.82</text>
+  <text x="540" y="110" fill="#F8FAFC" font-family="monospace" font-size="12">vehicle 0.61</text>
+</svg>

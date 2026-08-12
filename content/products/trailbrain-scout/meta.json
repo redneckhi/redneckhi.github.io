@@ -1,0 +1,15 @@
+{
+  "slug": "trailbrain-scout",
+  "name": "Trailbrain Scout",
+  "tagline": "Edge vision that fits in a dry bag.",
+  "tags": ["AI", "Software"],
+  "status": "Beta",
+  "sku": "RHI-TRAILBRN-A101",
+  "coverAccent": "yellow",
+  "summary": "On-device classifier for trail cams and perimeter nodes. No cloud required once models are loaded.",
+  "images": [
+    "/products/trailbrain-scout/01.svg",
+    "/products/trailbrain-scout/02.svg",
+    "/products/trailbrain-scout/03.svg"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "mesh-protocol",
+  "name": "RHI Mesh Protocol",
+  "tagline": "Off-grid chatter that survives bad weather.",
+  "tags": ["Software"],
+  "status": "Alpha",
+  "sku": "RHI-MESHPROTO-S101",
+  "coverAccent": "green",
+  "summary": "A pragmatic mesh messaging stack for field radios and cheap SBCs. Prioritizes delivery over elegance.",
+  "buyUrl": "https://example.com/buy/mesh-protocol"
+}

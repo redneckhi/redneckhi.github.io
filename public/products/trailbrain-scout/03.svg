@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#141210"/>
+  <rect x="100" y="120" width="600" height="360" stroke="#F97316" stroke-width="2"/>
+  <rect x="140" y="160" width="200" height="120" fill="#1f1812" stroke="#FACC15" stroke-width="2"/>
+  <rect x="380" y="160" width="280" height="40" fill="#84CC16" opacity="0.35"/>
+  <rect x="380" y="220" width="220" height="40" fill="#F97316" opacity="0.35"/>
+  <rect x="380" y="280" width="160" height="40" fill="#FACC15" opacity="0.35"/>
+  <text x="60" y="70" fill="#F97316" font-family="monospace" font-size="14">ENCLOSURE · DRY BAG FIT</text>
+  <text x="150" y="230" fill="#F8FAFC" font-family="monospace" font-size="14">NPU BOARD</text>
+</svg>
