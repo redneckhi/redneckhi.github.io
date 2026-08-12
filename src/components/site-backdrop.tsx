@@ -3,57 +3,7 @@
 import { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { CrossHair, HudReadout } from "@/components/instrument";
-
-const GLYPHS = [
-  {
-    text: "RHI // GRID",
-    delay: 400,
-    className:
-      "absolute left-[8%] top-[8%] hidden font-mono text-[9px] uppercase tracking-[0.28em] text-foreground/20 lg:block",
-  },
-  {
-    text: "Tactical solutions",
-    delay: 900,
-    className:
-      "absolute right-[7%] top-[14%] hidden font-mono text-[9px] uppercase tracking-[0.28em] text-foreground/15 xl:block",
-  },
-  {
-    text: "Net · mesh · field",
-    delay: 1400,
-    className:
-      "absolute left-[3%] top-[38%] hidden font-mono text-[9px] uppercase tracking-[0.24em] text-foreground/15 xl:block",
-  },
-  {
-    text: "Specimen index",
-    delay: 1900,
-    className:
-      "absolute right-[3%] top-[48%] hidden font-mono text-[9px] uppercase tracking-[0.24em] text-foreground/15 xl:block",
-  },
-  {
-    text: "Do not trust the cloud",
-    delay: 2400,
-    className:
-      "absolute left-[6%] bottom-[28%] hidden font-mono text-[9px] uppercase tracking-[0.22em] text-foreground/15 xl:block",
-  },
-  {
-    text: "Rev · mk.i // rhi",
-    delay: 2900,
-    className:
-      "absolute right-[5%] bottom-[18%] hidden font-mono text-[9px] uppercase tracking-[0.28em] text-foreground/15 xl:block",
-  },
-  {
-    text: "Ch-07 · az 214",
-    delay: 3300,
-    className:
-      "absolute left-[4%] bottom-[42%] hidden font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/12 xl:block",
-  },
-  {
-    text: "Good enough",
-    delay: 3700,
-    className:
-      "absolute bottom-[12%] right-[8%] hidden font-mono text-[9px] uppercase tracking-[0.28em] text-foreground/20 lg:block",
-  },
-] as const;
+import { backdropGlyphs, backdropTiming } from "@/lib/copy";
 
 function BackdropGlyph({
   text,
@@ -85,10 +35,44 @@ function BackdropGlyph({
   );
 }
 
+function formatMs(ms: number): string {
+  if (!Number.isFinite(ms) || ms < 0) return "--ms";
+  return `${Math.round(ms)}ms`;
+}
+
+function readNavTiming(): { dns: string; conn: string; load: string } {
+  const entry = performance.getEntriesByType(
+    "navigation",
+  )[0] as PerformanceNavigationTiming | undefined;
+
+  if (!entry) {
+    return { dns: "--ms", conn: "--ms", load: "--ms" };
+  }
+
+  const dns = Math.max(0, entry.domainLookupEnd - entry.domainLookupStart);
+  const conn = Math.max(0, entry.connectEnd - entry.connectStart);
+  const load =
+    entry.loadEventEnd > 0
+      ? Math.max(0, entry.loadEventEnd - entry.startTime)
+      : Math.max(0, entry.duration);
+
+  return {
+    dns: formatMs(dns),
+    conn: formatMs(conn),
+    load: formatMs(load),
+  };
+}
+
 /** Sparse instrument marks in page margins / whitespace. */
 export function SiteBackdrop() {
   const [ready, setReady] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [cursor, setCursor] = useState({ x: "00", y: "00" });
+  const [timing, setTiming] = useState({
+    dns: "--ms",
+    conn: "--ms",
+    load: "--ms",
+  });
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -97,6 +81,47 @@ export function SiteBackdrop() {
     const onChange = () => setReduceMotion(mq.matches);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    const update = () => setTiming(readNavTiming());
+    update();
+
+    if (document.readyState === "complete") {
+      requestAnimationFrame(update);
+      return;
+    }
+
+    window.addEventListener("load", update);
+    return () => window.removeEventListener("load", update);
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    let latest = { x: 0, y: 0 };
+
+    const format = (n: number) =>
+      String(Math.min(99, Math.max(0, Math.round(n)))).padStart(2, "0");
+
+    const flush = () => {
+      const w = window.innerWidth || 1;
+      const h = window.innerHeight || 1;
+      setCursor({
+        x: format((latest.x / w) * 99),
+        y: format((latest.y / h) * 99),
+      });
+      ticking = false;
+    };
+
+    const onMove = (e: MouseEvent) => {
+      latest = { x: e.clientX, y: e.clientY };
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(flush);
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
   return (
@@ -117,18 +142,36 @@ export function SiteBackdrop() {
       <span className="absolute bottom-[8%] left-[2%] size-4 border-b border-l border-foreground/15" />
       <span className="absolute bottom-[8%] right-[2%] size-4 border-b border-r border-foreground/15" />
 
+      <div className="absolute right-[2%] top-[4.75rem] hidden flex-col items-end gap-1 text-right opacity-30 xl:flex">
+        {(
+          [
+            [timing.dns, backdropTiming.dnsLabel],
+            [timing.conn, backdropTiming.connLabel],
+            [timing.load, backdropTiming.loadLabel],
+          ] as const
+        ).map(([value, label]) => (
+          <span
+            key={label}
+            className="inline-flex items-baseline justify-end gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em]"
+          >
+            <span className="text-foreground/90 tabular-nums">{value}</span>
+            <span className="text-muted-foreground">{label}</span>
+          </span>
+        ))}
+      </div>
+
       <HudReadout
         label="X"
-        value="00"
+        value={cursor.x}
         className="absolute left-[2%] top-1/2 hidden -translate-y-1/2 opacity-30 xl:inline-flex"
       />
       <HudReadout
         label="Y"
-        value="00"
+        value={cursor.y}
         className="absolute right-[2%] top-1/2 hidden -translate-y-1/2 opacity-30 xl:inline-flex"
       />
 
-      {GLYPHS.map((glyph) => (
+      {backdropGlyphs.map((glyph) => (
         <BackdropGlyph
           key={glyph.text}
           text={glyph.text}

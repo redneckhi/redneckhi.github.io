@@ -7,10 +7,11 @@ import {
   HudReadout,
   FramedPanel,
 } from "@/components/instrument";
+import { store } from "@/lib/copy";
 
 export const metadata: Metadata = {
   title: "Store",
-  description: "Prototype shop — filter, search, and browse technical docs.",
+  description: store.description,
 };
 
 export default function StorePage() {
@@ -31,12 +32,9 @@ export default function StorePage() {
             />
           </div>
           <h1 className="font-brand text-4xl font-bold tracking-tight sm:text-5xl">
-            Prototype store
+            {store.title}
           </h1>
-          <p className="max-w-2xl text-muted-foreground">
-            Browse field kits and software. Open a unit for build docs; Buy uses
-            the purchase link when one is configured.
-          </p>
+          <p className="max-w-2xl text-muted-foreground">{store.description}</p>
         </FramedPanel>
         <Suspense
           fallback={

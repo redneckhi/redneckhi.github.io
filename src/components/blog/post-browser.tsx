@@ -16,6 +16,7 @@ import {
   CrossHair,
   FramedPanel,
 } from "@/components/instrument";
+import { blog } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 
 function initialTagsFromSearch(tag: string | null): string[] {
@@ -68,7 +69,7 @@ export function PostBrowser({
         contentClassName="space-y-4 p-4"
       >
         <div className="flex flex-wrap items-center gap-3">
-          <InstrumentLabel>Field notes index</InstrumentLabel>
+          <InstrumentLabel>{blog.indexLabel}</InstrumentLabel>
           <StatusLed tone="live" label="LOG" />
           <HudReadout
             label="HIT"

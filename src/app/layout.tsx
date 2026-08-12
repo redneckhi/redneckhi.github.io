@@ -3,6 +3,7 @@ import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { SiteBackdrop } from "@/components/site-backdrop";
+import { site } from "@/lib/copy";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -20,11 +21,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Redneck Heavy Industries",
-    template: "%s · RHI",
+    default: site.name,
+    template: site.titleTemplate,
   },
-  description:
-    "Custom tactical solutions — networking, tech, clothing. Good enough. Prototype docs and store.",
+  description: site.description,
 };
 
 export default function RootLayout({

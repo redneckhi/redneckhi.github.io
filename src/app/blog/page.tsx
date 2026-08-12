@@ -7,10 +7,11 @@ import {
   HudReadout,
   FramedPanel,
 } from "@/components/instrument";
+import { blog } from "@/lib/copy";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Field notes, build logs, and prototype write-ups from RHI.",
+  title: blog.title,
+  description: blog.description,
 };
 
 export default function BlogPage() {
@@ -33,11 +34,9 @@ export default function BlogPage() {
             />
           </div>
           <h1 className="font-brand text-4xl font-bold tracking-tight sm:text-5xl">
-            Field notes
+            {blog.title}
           </h1>
-          <p className="max-w-2xl text-muted-foreground">
-            Build logs and field write-ups. Open an entry for the full brief.
-          </p>
+          <p className="max-w-2xl text-muted-foreground">{blog.heroBlurb}</p>
         </FramedPanel>
         <Suspense
           fallback={

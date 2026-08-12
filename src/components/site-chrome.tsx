@@ -19,24 +19,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  footer,
+  headerHud,
+  navLinks,
+  orgLinks,
+  site,
+} from "@/lib/copy";
 import { cn } from "@/lib/utils";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/store/", label: "Store" },
-  { href: "/blog/", label: "Field notes" },
-];
-
-const ORG_LINKS = [
-  {
-    label: "GitHub",
-    href: "https://github.com/redneckhi",
-  },
-  {
-    label: "Hugging Face",
-    href: "https://huggingface.co/redneckhi",
-  },
-] as const;
 
 export function SiteHeader({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
@@ -88,7 +78,7 @@ export function SiteHeader({ className }: { className?: string }) {
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4 pb-6">
-                {links.map((link) => (
+                {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -105,11 +95,11 @@ export function SiteHeader({ className }: { className?: string }) {
           <Link href="/" className="group flex items-center gap-3">
             <span className="tape-stripe size-7 shrink-0 border border-border" />
             <span className="font-brand text-sm font-bold tracking-tight sm:text-base">
-              Redneck Heavy Industries
+              {site.name}
             </span>
           </Link>
           <nav className="hidden items-center gap-1 sm:flex">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -128,8 +118,15 @@ export function SiteHeader({ className }: { className?: string }) {
           >
             <CrossHair className="text-muted-foreground/70" />
             <StatusLed tone="live" label="SYS" />
-            <HudReadout label="CH" value="01" />
-            <HudReadout label="LAT" value="47.2N" className="hidden xl:inline-flex" />
+            <HudReadout
+              label={headerHud.channelLabel}
+              value={headerHud.channelValue}
+            />
+            <HudReadout
+              label={headerHud.latLabel}
+              value={headerHud.latValue}
+              className="hidden xl:inline-flex"
+            />
           </span>
           <ThemeToggle />
         </div>
@@ -146,15 +143,13 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 sm:px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
-            <p className="font-brand text-sm font-semibold">
-              Redneck Heavy Industries
-            </p>
+            <p className="font-brand text-sm font-semibold">{site.name}</p>
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              Custom tactical solutions · good enough
+              {site.tagline}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            {ORG_LINKS.map((link) => (
+            {orgLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -181,9 +176,9 @@ export function SiteFooter() {
           className="flex flex-wrap items-center gap-4 border-t border-border/60 pt-3"
           aria-hidden
         >
-          <StatusLed tone="warn" label="FIELD" />
-          <HudReadout label="NET" value="MESH" />
-          <HudReadout label="REV" value="MK.I" />
+          <StatusLed tone="live" label={footer.ledLabel} />
+          <HudReadout label={footer.docsLabel} value={footer.docsValue} />
+          <HudReadout label={footer.revLabel} value={footer.revValue} />
           <CrossHair className="text-muted-foreground" />
         </div>
       </div>
