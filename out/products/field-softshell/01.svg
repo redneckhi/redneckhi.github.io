@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1a1612"/>
+  <rect x="40" y="40" width="720" height="520" stroke="#F97316" stroke-width="2" opacity="0.5"/>
+  <path d="M260 140h280l40 80v220H220V220l40-80z" fill="#2a241c" stroke="#F97316" stroke-width="3"/>
+  <path d="M260 140l40 40h200l40-40" stroke="#FACC15" stroke-width="8"/>
+  <path d="M300 280h200" stroke="#84CC16" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="60" y="70" fill="#84CC16" font-family="monospace" font-size="14">OPTIC · SOFTSHELL · FRM 01</text>
+  <text x="60" y="560" fill="#F97316" font-family="monospace" font-size="12">RHI-SOFTSHELL-C101</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#181410"/>
+  <rect x="160" y="150" width="480" height="280" rx="6" fill="#221c16" stroke="#F97316" stroke-width="3"/>
+  <g stroke="#FACC15" stroke-width="2">
+    <rect x="200" y="190" width="40" height="40"/>
+    <rect x="260" y="190" width="40" height="40"/>
+    <rect x="320" y="190" width="40" height="40"/>
+    <rect x="380" y="190" width="40" height="40"/>
+    <rect x="440" y="190" width="40" height="40"/>
+    <rect x="500" y="190" width="40" height="40"/>
+    <rect x="200" y="260" width="40" height="40"/>
+    <rect x="260" y="260" width="40" height="40"/>
+    <rect x="320" y="260" width="40" height="40"/>
+    <rect x="380" y="260" width="40" height="40"/>
+  </g>
+  <text x="60" y="70" fill="#FACC15" font-family="monospace" font-size="14">KIT · TORQUE BITS · FRM 01</text>
+  <text x="60" y="560" fill="#F97316" font-family="monospace" font-size="12">RHI-TORQUEKIT-T101</text>
+</svg>
