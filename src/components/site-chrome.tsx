@@ -29,11 +29,11 @@ const links = [
 const ORG_LINKS = [
   {
     label: "GitHub",
-    href: "https://github.com/redneck-heavy-industries",
+    href: "https://github.com/redneckhi",
   },
   {
     label: "Hugging Face",
-    href: "https://huggingface.co/redneck-heavy-industries",
+    href: "https://huggingface.co/redneckhi",
   },
 ] as const;
 
