@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
-Output lands in `out/`. Preview locally with any static server, e.g. `npx serve out`.
+Output lands in `docs/`. Preview locally with any static server, e.g. `npx serve docs`.
 
 For a project-pages base path locally:
 
@@ -29,7 +29,7 @@ BASE_PATH=/rhi-website npm run build
 
 ## Docker build
 
-Build with the official Node image (no custom Dockerfile). Source and output are mounted in:
+Build with the official Node image (no custom Dockerfile). Source is mounted in; export writes to `docs/` in the project:
 
 ```bash
 ./scripts/docker-build.sh
@@ -41,10 +41,15 @@ Optional project-pages base path:
 BASE_PATH=/rhi-website ./scripts/docker-build.sh
 ```
 
+Publish somewhere other than `docs/` after the build:
+
+```bash
+OUT_DIR=/tmp/rhi-site ./scripts/docker-build.sh
+```
+
 This runs `node:22-bookworm-slim` with:
 
 - project root → `/app`
-- `./out` → `/out`
 - anonymous volume for `/app/node_modules` (Linux deps, not the host’s)
 
 Override the image with `NODE_IMAGE=node:22 ./scripts/docker-build.sh` if needed.
@@ -80,4 +85,4 @@ Optional `images` are public paths (e.g. `/products/slug/01.svg`). Two or more i
 | `/store/` | Shop (search, tags, list/grid); `?tag=Pouches` filters |
 | `/store/<slug>/` | Product detail, in-page docs + TOC, Buy via `buyUrl` |
 
-Deploy by publishing the `out/` directory from `./scripts/docker-build.sh` to any static host.
+Deploy by publishing the `docs/` directory from `./scripts/docker-build.sh` (or `npm run build`) to any static host.
