@@ -62,7 +62,14 @@ Products live under `content/products/<slug>/`:
 - `overview.mdx` — optional long-form overview (not shown in UI currently)
 - `docs.mdx` — technical / build documentation shown on the product detail page (headings become the TOC)
 
+Blog posts live under `content/blog/<slug>/`:
+
+- `meta.json` — title, excerpt, tags, `publishedAt`, author, optional `coverImage`, optional `draft`
+- `post.mdx` — entry body (headings become the TOC on the post page)
+
 Tags: `Clothing`, `Software`, `AI`, `Tools`, `Pouches`.
+
+Blog tags: `Field`, `Build`, `Networking`, `Software`, `AI`.
 
 - Set `"docsAvailable": false` to hide the docs body on the product page.
 - Set `"buyUrl": "https://…"` for the Buy button; omit or leave empty to keep Buy locked/greyed out.
@@ -84,5 +91,7 @@ Optional `images` are public paths (e.g. `/products/slug/01.svg`). Two or more i
 | `/` | Brand landing |
 | `/store/` | Shop (search, tags, list/grid); `?tag=Pouches` filters |
 | `/store/<slug>/` | Product detail, in-page docs + TOC, Buy via `buyUrl` |
+| `/blog/` | Field notes index (search, tags); `?tag=Field` filters |
+| `/blog/<slug>/` | Blog entry with MDX body + TOC |
 
 Deploy by publishing the `docs/` directory from `./scripts/docker-build.sh` (or `npm run build`) to any static host.

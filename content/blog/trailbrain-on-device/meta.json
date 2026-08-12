@@ -1,0 +1,9 @@
+{
+  "slug": "trailbrain-on-device",
+  "title": "Trailbrain stays on-device",
+  "excerpt": "Why Scout models load from a dry-bag path and never call home after deploy.",
+  "tags": ["AI", "Software"],
+  "publishedAt": "2026-08-10",
+  "coverAccent": "yellow",
+  "author": "RHI"
+}

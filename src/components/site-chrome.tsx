@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/", label: "Home" },
   { href: "/store/", label: "Store" },
+  { href: "/blog/", label: "Field notes" },
 ];
 
 const ORG_LINKS = [

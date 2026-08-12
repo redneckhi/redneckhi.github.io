@@ -1,0 +1,24 @@
+## Constraint
+
+Field units lose connectivity. Pretending otherwise ships brittle systems.
+
+## Model path
+
+Place ONNX / TFLite files under `/opt/trailbrain/models`. Config points at filenames only — never bake absolute lab paths into field images.
+
+```yaml
+models:
+  trail: scout-v3.onnx
+  perimeter: fence-lite.tflite
+runtime:
+  threads: 2
+  max_batch: 1
+```
+
+## Inference budget
+
+We target frames the operator can still interpret, not leaderboard FPS. If the LED is green and the box is warm, that is usually enough.
+
+## Updates
+
+Swap model files on a maintenance bench. Do not phone home for weights. If you need a cloud, bring your own tent.

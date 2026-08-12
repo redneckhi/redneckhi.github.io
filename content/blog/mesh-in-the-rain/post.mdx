@@ -1,0 +1,27 @@
+## Setup
+
+We ran three cheap SBCs and two handsets on a ridge trail for 36 hours. Rain was intermittent. Power was scavenged USB banks. Nobody called it a test plan; we called it a walk.
+
+## What broke
+
+### Antenna routing
+
+Cable chafe at the softshell exit ate one coax. Tape helps once. A grommet helps twice. Plan for the chafe before the weather does.
+
+### Duplicate floods
+
+When nodes reappeared after a blackout, the mesh re-announced everything it had cached. Fine on paper. Loud on a 9600 baud link. Cap gossip bursts or you will burn duty cycle explaining old news.
+
+### Time sync
+
+Wall clocks drifted. Packet timestamps without a shared epoch made “latest” meaningless. We now seed with GPS when available and fall back to “good enough relative order” when not.
+
+## What we kept
+
+- Prefer delivery over elegance
+- Inspectable packets over clever compression
+- A written PSK rotation note that someone actually reads
+
+## Next season
+
+Bring spare coax, a drain plan for pouches, and one person whose only job is watching the LED that means “still alive.”

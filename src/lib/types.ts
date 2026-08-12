@@ -37,3 +37,32 @@ export type Product = ProductMeta & {
   /** Resolved: meta.docsAvailable !== false and docs body is non-empty */
   hasDocs: boolean;
 };
+
+export const BLOG_TAGS = [
+  "Field",
+  "Build",
+  "Networking",
+  "Software",
+  "AI",
+] as const;
+
+export type BlogTag = (typeof BLOG_TAGS)[number];
+
+export type BlogMeta = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  tags: BlogTag[];
+  /** ISO date YYYY-MM-DD for sorting/display */
+  publishedAt: string;
+  coverAccent: "orange" | "green" | "yellow";
+  coverImage?: string;
+  author: string;
+  /** When true, post is omitted from listing and static params */
+  draft?: boolean;
+};
+
+export type BlogPost = BlogMeta & {
+  body: string;
+  readingMinutes: number;
+};
