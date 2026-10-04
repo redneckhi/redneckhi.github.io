@@ -1,9 +1,8 @@
 export const PRODUCT_TAGS = [
   "Clothing",
   "Software",
-  "AI",
   "Tools",
-  "Pouches",
+  "Misc",
 ] as const;
 
 export type ProductTag = (typeof PRODUCT_TAGS)[number];
