@@ -107,7 +107,7 @@ export function HomeHero() {
             className="font-mono text-[11px] uppercase tracking-[0.28em] text-hivis"
           />
 
-          <HeroLine
+          <HeroLine  
             as="h1"
             text={site.name}
             delay={900}

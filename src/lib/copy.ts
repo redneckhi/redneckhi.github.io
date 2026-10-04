@@ -39,7 +39,7 @@ export const home = {
   ctaStore: "Enter store",
   ctaStoreHint: "// INV",
   statusLabel: "STATUS:",
-  statusValue: "ALPHA",
+  statusValue: "BETA",
   gridLabel: "GRID",
   gridValue: `${misc.latValue} // ${misc.longValue}`,
   protoLabel: "PROTO",
@@ -51,7 +51,7 @@ export const footer = {
   docsLabel: "Documentation//",
   docsValue: "//",
   revLabel: "REV",
-  revValue: "20260812",
+  revValue: "20261004",
 } as const;
 
 export const headerHud = {

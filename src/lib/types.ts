@@ -44,6 +44,7 @@ export const BLOG_TAGS = [
   "Networking",
   "Software",
   "AI",
+  "RHI",
 ] as const;
 
 export type BlogTag = (typeof BLOG_TAGS)[number];
