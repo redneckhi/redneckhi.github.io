@@ -1,10 +1,10 @@
 {
-    "slug": "T-",
-     "title": "S-311 // TrailBrain",
-     "tagline": "RHIs tactical advisor AI.",
-     "tags": ["AI", "Software"],
+    "slug": "t-311",
+     "title": "T-311 // Sling Discard",
+     "tagline": "Discard your sling whenever you need to.",
+     "tags": ["Tools", "Attachment"],
      "status": "Alpha",
-     "sku": "RHI-S-311",
-     "coverAccent": "red",
-     "summary": "An unadvanced fine-tune of TODO based on various tactical and survival books as well as publicly available US MIL TTPs"
+     "sku": "RHI-T-311",
+     "coverAccent": "green",
+     "summary": "A simple sling quick detach adapter, compatible with most strap sling designs."
 }  
