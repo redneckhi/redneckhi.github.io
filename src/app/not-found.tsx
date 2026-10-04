@@ -16,7 +16,7 @@ export default function NotFound() {
           Off the map
         </h1>
         <p className="text-muted-foreground">
-          That prototype is not in inventory. Return to the store and try again.
+          That specimen is not in inventory. Return to the store and try again.
         </p>
         <Link
           href="/store/"

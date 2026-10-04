@@ -6,8 +6,8 @@ export const site = {
   tagline:
     "Innovation through stupidity; Voiding Warranties in Hostile Environments.",
   description:
-    "Innovation through stupidity; voiding warranties in hostile environments. Prototype docs, store, and field notes.",
-  eyebrow: "Prototype documentation network",
+    "Innovation through stupidity; voiding warranties in hostile environments. Specimen docs, store, and field notes.",
+  eyebrow: "Specimen documentation network",
   titleTemplate: "%s //RHI",
 } as const;
 
@@ -63,15 +63,15 @@ export const headerHud = {
 
 export const blog = {
   title: "Field notes",
-  description: "Field notes, build logs, and prototype write-ups from RHI.",
+  description: "Field notes, build logs, and specimen write-ups from RHI.",
   indexLabel: "Field notes index",
   heroBlurb: "Build logs and field write-ups. Open an entry for the full brief.",
 } as const;
 
 export const store = {
-  title: "Prototype store",
+  title: "Specimen store",
   description:
-    "Browse field kits and software. Open a unit for build docs; Buy uses the purchase link when one is configured.",
+    "Browse our various specimen. Open a unit for descriptions and build docs.",
 } as const;
 
 /** Top-right backdrop timing readout labels */

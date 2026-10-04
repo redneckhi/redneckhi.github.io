@@ -1,0 +1,10 @@
+{
+   "slug": "s-311",
+    "title": "S-311 // TrailBrain",
+    "tagline": "RHIs tactical advisor AI.",
+    "tags": ["AI", "Software"],
+    "status": "Alpha",
+    "sku": "RHI-S-311",
+    "coverAccent": "red",
+    "summary": "An unadvanced fine-tune of TODO based on various tactical and survival books as well as publicly available US MIL TTPs"
+}  

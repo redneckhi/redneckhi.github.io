@@ -106,7 +106,7 @@ export function ProductBrowser({ products }: { products: ProductMeta[] }) {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search prototypes, SKUs, tags…"
+            placeholder="Search specimen, SKUs, tags…"
             className="h-10 rounded-none border-border bg-background/50 pl-10 font-mono text-sm backdrop-blur-md"
           />
         </div>
